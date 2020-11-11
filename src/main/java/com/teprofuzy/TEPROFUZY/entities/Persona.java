@@ -1,12 +1,18 @@
 package com.teprofuzy.TEPROFUZY.entities;
 
 import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -23,18 +29,30 @@ import lombok.experimental.SuperBuilder;
 public class Persona {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	@Column(name="idPersona")
+	@GeneratedValue(strategy = GenerationType.IDENTITY )
+	private Long idPersona;
+	
 	@Column
 	private String dni;
+	
 	@Column
 	private String nombres;
+	
 	@Column
 	private String apellidoPaterno;
+	
 	@Column
 	private String apellidoMaterno;
+	
 	@Column
 	private Date fechaNacimiento;
 	
+	@ManyToOne(fetch=FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
+	@JoinColumn(name="idGenero")
+	private Genero genero;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+	private List<Telefono> telefono;
 	
 }

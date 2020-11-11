@@ -23,14 +23,7 @@ public class PersonaServiceImpl implements PersonaService {
 	
 	@Override
 	public List<PersonaDto> mostrarPersonas() {
-		List<Persona> personas = personaRepository.findAll();
-		List<PersonaDto> personasDto = new ArrayList<>();
-		for(Persona p:personas) {
-			PersonaDto personaDto =  new PersonaDto();
-			personaDto= personaMapper.PersonaToPersonaDto(p,personaDto);
-			personasDto.add(personaDto);
-		}
-		return personasDto;  
+		return personaMapper.listPersonaToPersonaDto(personaRepository.findAll()); 
 	}
 
 	@Override

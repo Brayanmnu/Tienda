@@ -19,14 +19,16 @@ public interface PersonaMapper {
 	PersonaMapper INSTANCE = Mappers.getMapper( PersonaMapper.class );
 	
 	@Mappings({
-		@Mapping(target="id",source="persona.id"),
+		@Mapping(target="id",source="persona.idPersona"),
 		@Mapping(target="dni",source="persona.dni"),
 		@Mapping(target="nombres",source="persona.nombres"),
 		@Mapping(target="apellidoPaterno",source="persona.apellidoPaterno"),
 		@Mapping(target="apellidoMaterno",source="persona.apellidoMaterno"),
-		@Mapping(target="fechaNacimiento",source="persona.fechaNacimiento")
+		@Mapping(target="fechaNacimiento",source="persona.fechaNacimiento"),
+		@Mapping(target="genero",source="persona.genero"),
+		@Mapping(target="telefono",source="persona.telefono")
 	})
-	PersonaDto PersonaToPersonaDto(Persona persona,PersonaDto personaDto);
+	PersonaDto PersonaToPersonaDto(Persona persona);
 	
 	Persona PersonaDtoToPersona(PersonaDto personaDto);
 	

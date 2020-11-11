@@ -1,6 +1,7 @@
 package com.teprofuzy.TEPROFUZY.dto;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +20,7 @@ public class PersonaDto {
 	private String apellidoPaterno;
 	private String apellidoMaterno;
 	private Date fechaNacimiento;
-	
+	private GeneroDto genero;
+	private List<TelefonoDto> telefono;
 
 }
