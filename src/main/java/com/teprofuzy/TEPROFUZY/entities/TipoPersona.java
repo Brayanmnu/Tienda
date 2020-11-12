@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -19,18 +17,14 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @Entity
 @SuperBuilder
-@Table(name = "Telefono")
-public class Telefono {
+@Table(name = "TipoPersona")
+public class TipoPersona {
 
 	@Id
-	@Column(name="idTelefono")
+	@Column(name="idTipoPersona")
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	private Long idTelefono;
+	private Long idTipoPersona;
 	
 	@Column
-	private String numero;
-	
-	@ManyToOne
-    @JoinColumn(name = "idPersona", nullable = false, updatable = false)
-    private Persona persona;
+	private String nombre;
 }

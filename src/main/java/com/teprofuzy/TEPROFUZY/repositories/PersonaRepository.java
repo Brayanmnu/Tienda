@@ -12,6 +12,6 @@ import com.teprofuzy.TEPROFUZY.entities.Persona;
 @Repository
 public interface PersonaRepository extends JpaRepository<Persona, Long> {
 
-	@Query("from Persona p where p.dni = :dni")
-	public Optional<Persona> findByDni(@Param("dni") String dni);
+	@Query("from Persona p where p.dniRuc = :dniRuc")
+	public Optional<Persona> findByDniRuc(@Param("dniRuc") String dniRuc);
 }

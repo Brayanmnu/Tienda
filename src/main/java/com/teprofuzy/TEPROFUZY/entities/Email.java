@@ -19,16 +19,16 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @Entity
 @SuperBuilder
-@Table(name = "Telefono")
-public class Telefono {
-
+@Table(name = "Email")
+public class Email {
+	
 	@Id
-	@Column(name="idTelefono")
+	@Column(name="idEmail")
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	private Long idTelefono;
+	private Long idEmail;
 	
 	@Column
-	private String numero;
+	private String correo;
 	
 	@ManyToOne
     @JoinColumn(name = "idPersona", nullable = false, updatable = false)

@@ -34,10 +34,10 @@ public class Persona {
 	private Long idPersona;
 	
 	@Column
-	private String dni;
+	private String dniRuc;
 	
 	@Column
-	private String nombres;
+	private String nombresRazonSocial;
 	
 	@Column
 	private String apellidoPaterno;
@@ -52,7 +52,20 @@ public class Persona {
 	@JoinColumn(name="idGenero")
 	private Genero genero;
 	
+	@ManyToOne(fetch=FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
+	@JoinColumn(name="idTipoPersona")
+	private TipoPersona tipoPersona;
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
 	private List<Telefono> telefono;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+	private List<Email> email;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+	private List<Direccion> direccion;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+	private List<Usuario> usuario;
 	
 }

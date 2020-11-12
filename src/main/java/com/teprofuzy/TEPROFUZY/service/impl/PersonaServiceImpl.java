@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.teprofuzy.TEPROFUZY.dto.PersonaDto;
 import com.teprofuzy.TEPROFUZY.entities.Persona;
-import com.teprofuzy.TEPROFUZY.mappers.PersonaMapper;
+import com.teprofuzy.TEPROFUZY.mappers.EntitiesDtosMappers;
 import com.teprofuzy.TEPROFUZY.repositories.PersonaRepository;
 import com.teprofuzy.TEPROFUZY.services.PersonaService;
 
@@ -19,7 +19,7 @@ public class PersonaServiceImpl implements PersonaService {
 	private PersonaRepository personaRepository;
 	
 	@Autowired
-	private PersonaMapper personaMapper;
+	private EntitiesDtosMappers personaMapper;
 	
 	@Override
 	public List<PersonaDto> mostrarPersonas() {
@@ -28,7 +28,7 @@ public class PersonaServiceImpl implements PersonaService {
 
 	@Override
 	public String registrarPersonas(PersonaDto personaDto) {
-		Persona persona = personaMapper.PersonaDtoToPersona(personaDto);
+		Persona persona = personaMapper.personaDtoToPersona(personaDto);
 		personaRepository.saveAndFlush(persona);
 		return "regitrado";
 	}
