@@ -2,6 +2,7 @@ package com.teprofuzy.TEPROFUZY.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,7 +31,7 @@ public class Email {
 	@Column
 	private String correo;
 	
-	@ManyToOne
-    @JoinColumn(name = "idPersona", nullable = false, updatable = false)
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "idPersona")
     private Persona persona;
 }

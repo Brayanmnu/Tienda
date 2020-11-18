@@ -2,7 +2,6 @@ package com.teprofuzy.TEPROFUZY.entities;
 
 import java.sql.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,7 +31,7 @@ public class Empleado {
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long idEmpleado;
 
-	@ManyToOne(fetch=FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idPersona")
 	private Persona persona;
 	
@@ -42,11 +41,11 @@ public class Empleado {
 	@Column
 	private Date fechaFinTrabajo;
 	
-	@ManyToOne(fetch=FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idEstado")
 	private Estado estado;
 	
-	@ManyToOne(fetch=FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idCategoriaEmpleado")
 	private CategoriaEmpleado categoriaEmpleado;
 	

@@ -5,6 +5,7 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,8 +30,8 @@ public class HistorialProductoTienda {
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long idHistorialProductoTienda;
 	
-	@ManyToOne
-    @JoinColumn(name = "idProducto", nullable = false, updatable = false)
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "idProducto")
     private Producto producto;
 
 	@Column

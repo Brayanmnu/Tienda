@@ -1,8 +1,6 @@
 package com.teprofuzy.TEPROFUZY.entities;
 
 import java.math.BigDecimal;
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,41 +21,49 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @Entity
 @SuperBuilder
-@Table(name = "Pedido")
-public class Pedido {
-	
+@Table(name = "Comprobante")
+public class Comprobante {
+
 	@Id
-	@Column(name="idPedido")
+	@Column(name="idComprobante")
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	private Long idPedido;
+	private Long idComprobante;
 	
 	@Column
 	private String codigo;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="idCliente")
-	private Cliente cliente;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="idProducto")
-	private Producto producto;
+	@JoinColumn(name="idTipoPago")
+	private TipoPago tipoPago;
 	
 	@Column
-	private BigDecimal cantidad;
-	
-	@Column
-	private Date fecha;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="idEmpleado")
-	private Empleado empleado;
-	
-	@Column
-	private BigDecimal precioUnitario;
-	
-	@Column
-	private BigDecimal descuento;
+	private BigDecimal precioSubTotal;
 
 	@Column
-	private BigDecimal precioUnitarioFinal;
+	private BigDecimal igv;
+
+	@Column
+	private BigDecimal descuento;
+	
+	@Column
+	private BigDecimal precioTotal;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="idEstadoComprobante")
+	private EstadoComprobante estadoComprobante;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="idTipoComprobante")
+	private TipoComprobante tipoComprobante;
+	
+	@Column
+	private Long proceso;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="idPedido")
+	private Pedido pedido;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="idProveedorProducto")
+	private ProveedorProducto proveedorProducto;
 }

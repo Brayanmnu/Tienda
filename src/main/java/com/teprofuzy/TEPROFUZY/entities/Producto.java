@@ -2,8 +2,6 @@ package com.teprofuzy.TEPROFUZY.entities;
 
 import java.math.BigDecimal;
 import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -45,18 +43,18 @@ public class Producto {
 	@Column
 	private BigDecimal precio;
 	
-	@ManyToOne(fetch=FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idEstado")
 	private Estado estado;
 	
 	@Column
 	private BigDecimal stock;
 	
-	@ManyToOne(fetch=FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idTipoProducto")
 	private TipoProducto tipoProducto;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
+	@OneToMany(mappedBy = "producto")
 	private List<HistorialProductoTienda> historialProductoTienda;
 
 }

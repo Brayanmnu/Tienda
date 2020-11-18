@@ -3,7 +3,6 @@ package com.teprofuzy.TEPROFUZY.entities;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,18 +32,18 @@ public class ProveedorProducto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long idProveedorProducto;
 	
-	@ManyToOne(fetch=FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idProveedor")
 	private Proveedor proveedor;
 	
-	@ManyToOne(fetch=FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idProducto")
 	private Producto producto;
 	
 	@Column
 	private BigDecimal precio;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "proveedorProducto")
+	@OneToMany(mappedBy = "proveedorProducto")
 	private List<HistorialProveedorProducto> historialProveedorProducto;
 	
 }

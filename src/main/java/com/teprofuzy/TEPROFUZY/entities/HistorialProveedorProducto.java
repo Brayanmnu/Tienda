@@ -3,7 +3,6 @@ package com.teprofuzy.TEPROFUZY.entities;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,7 +30,7 @@ public class HistorialProveedorProducto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long idHistorialProveedorProducto;
 	
-	@ManyToOne(fetch=FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idProveedorProducto")
 	private ProveedorProducto proveedorProducto;
 	

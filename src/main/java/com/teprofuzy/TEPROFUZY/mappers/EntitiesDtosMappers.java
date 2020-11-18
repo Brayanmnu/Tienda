@@ -12,6 +12,7 @@ import org.mapstruct.factory.Mappers;
 
 import com.teprofuzy.TEPROFUZY.dto.CategoriaEmpleadoDto;
 import com.teprofuzy.TEPROFUZY.dto.ClienteDto;
+import com.teprofuzy.TEPROFUZY.dto.ComprobanteDto;
 import com.teprofuzy.TEPROFUZY.dto.DireccionDto;
 import com.teprofuzy.TEPROFUZY.dto.EmailDto;
 import com.teprofuzy.TEPROFUZY.dto.EmpleadoDto;
@@ -34,6 +35,7 @@ import com.teprofuzy.TEPROFUZY.dto.TipoUsuarioDto;
 import com.teprofuzy.TEPROFUZY.dto.UsuarioDto;
 import com.teprofuzy.TEPROFUZY.entities.CategoriaEmpleado;
 import com.teprofuzy.TEPROFUZY.entities.Cliente;
+import com.teprofuzy.TEPROFUZY.entities.Comprobante;
 import com.teprofuzy.TEPROFUZY.entities.Direccion;
 import com.teprofuzy.TEPROFUZY.entities.Email;
 import com.teprofuzy.TEPROFUZY.entities.Empleado;
@@ -177,7 +179,7 @@ public interface EntitiesDtosMappers {
 			@Mapping(target = "password", source = "usuarioDto.password"),
 			@Mapping(target = "persona", source = "usuarioDto.persona"),
 			@Mapping(target = "tipoUsuario", source = "usuarioDto.tipoUsuario") })
-	Usuario direccionDtoToDireccion(UsuarioDto usuarioDto);
+	Usuario usuarioDtoToUsuario(UsuarioDto usuarioDto);
 
 	List<Usuario> listUsuarioDtoToUsuario(List<UsuarioDto> usuarioDtoList);
 
@@ -192,7 +194,7 @@ public interface EntitiesDtosMappers {
 	@Mappings({ @Mapping(target = "idTipoUsuario", source = "tipoUsuarioDto.id"),
 			@Mapping(target = "nombre", source = "tipoUsuarioDto.nombre"),
 			@Mapping(target = "descripcion", source = "tipoUsuarioDto.descripcion") })
-	TipoUsuario tipoUsuarioStoToTipoUsuario(TipoUsuarioDto tipoUsuarioDto);
+	TipoUsuario tipoUsuarioDtoToTipoUsuario(TipoUsuarioDto tipoUsuarioDto);
 
 	List<TipoUsuario> listTipoUsuarioDtoTipoUsuario(List<TipoUsuarioDto> tipoUsuarioDtoList);
 
@@ -362,7 +364,7 @@ public interface EntitiesDtosMappers {
 
 	List<ProductoDto> listProductoToProductoDto(List<Producto> productoList);
 
-	// HISTORIAL_PRODUCTO
+	// HISTORIAL_PRODUCTO_TIENDA
 	@Mappings({ @Mapping(target = "id", source = "historialProductoTienda.idHistorialProductoTienda"),
 			@Mapping(target = "producto", source = "historialProductoTienda.producto"),
 			@Mapping(target = "fecha", source = "historialProductoTienda.fecha"),
@@ -377,10 +379,10 @@ public interface EntitiesDtosMappers {
 	HistorialProductoTienda historialProductoTiendaDtoTohistorialProductoTienda(
 			HistorialProductoTiendaDto historialProductoTiendaDto);
 
-	List<HistorialProductoTienda> listHistorialProductoTiendaDtoTohistorialProductoTienda(
+	List<HistorialProductoTienda> listHistorialProductoTiendaDtoToHistorialProductoTienda(
 			List<HistorialProductoTiendaDto> historialProductoTiendaDtoList);
 
-	List<HistorialProductoTiendaDto> listHistorialProductoTiendaTohistorialProductoTiendaDto(
+	List<HistorialProductoTiendaDto> listHistorialProductoTiendaToHistorialProductoTiendaDto(
 			List<HistorialProductoTienda> historialProductoTiendaList);
 
 	// PROVEEDOR_PRODUCTO
@@ -453,4 +455,37 @@ public interface EntitiesDtosMappers {
 	List<Pedido> listPedidoDtoToPedido(List<PedidoDto> pedidoDtoList);
 
 	List<PedidoDto> listPedidoToPedidoDto(List<Pedido> pedidoList);
+
+	// COMPROBANTE
+	@Mappings({ @Mapping(target = "id", source = "comprobante.idComprobante"),
+			@Mapping(target = "codigo", source = "comprobante.codigo"),
+			@Mapping(target = "tipoPago", source = "comprobante.tipoPago"),
+			@Mapping(target = "precioSubTotal", source = "comprobante.precioSubTotal"),
+			@Mapping(target = "igv", source = "comprobante.igv"),
+			@Mapping(target = "descuento", source = "comprobante.descuento"),
+			@Mapping(target = "precioTotal", source = "comprobante.precioTotal"),
+			@Mapping(target = "estadoComprobante", source = "comprobante.estadoComprobante"),
+			@Mapping(target = "tipoComprobante", source = "comprobante.tipoComprobante"),
+			@Mapping(target = "proceso", source = "comprobante.proceso"),
+			@Mapping(target = "pedido", source = "comprobante.pedido"),
+			@Mapping(target = "proveedorProducto", source = "comprobante.proveedorProducto") })
+	ComprobanteDto comprobanteToComprobanteDto(Comprobante comprobante);
+
+	@Mappings({ @Mapping(target = "idComprobante", source = "comprobanteDto.id"),
+		@Mapping(target = "codigo", source = "comprobanteDto.codigo"),
+		@Mapping(target = "tipoPago", source = "comprobanteDto.tipoPago"),
+		@Mapping(target = "precioSubTotal", source = "comprobanteDto.precioSubTotal"),
+		@Mapping(target = "igv", source = "comprobanteDto.igv"),
+		@Mapping(target = "descuento", source = "comprobanteDto.descuento"),
+		@Mapping(target = "precioTotal", source = "comprobanteDto.precioTotal"),
+		@Mapping(target = "estadoComprobante", source = "comprobanteDto.estadoComprobante"),
+		@Mapping(target = "tipoComprobante", source = "comprobanteDto.tipoComprobante"),
+		@Mapping(target = "proceso", source = "comprobanteDto.proceso"),
+		@Mapping(target = "pedido", source = "comprobanteDto.pedido"),
+		@Mapping(target = "proveedorProducto", source = "comprobanteDto.proveedorProducto") })
+	Comprobante comprobanteDtoToComprobante(ComprobanteDto comprobanteDto);
+
+	List<Comprobante> listComprobanteDtoToComprobante(List<ComprobanteDto> comprobanteDtolist);
+
+	List<ComprobanteDto> listComprobanteToComprobanteDto(List<Comprobante> comprobanteList);
 }

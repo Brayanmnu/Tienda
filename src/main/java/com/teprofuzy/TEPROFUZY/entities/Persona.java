@@ -3,7 +3,6 @@ package com.teprofuzy.TEPROFUZY.entities;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -48,24 +47,24 @@ public class Persona {
 	@Column
 	private Date fechaNacimiento;
 	
-	@ManyToOne(fetch=FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idGenero")
 	private Genero genero;
 	
-	@ManyToOne(fetch=FetchType.LAZY,optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idTipoPersona")
 	private TipoPersona tipoPersona;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+	@OneToMany(mappedBy = "persona")
 	private List<Telefono> telefono;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+	@OneToMany(mappedBy = "persona")
 	private List<Email> email;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+	@OneToMany(mappedBy = "persona")
 	private List<Direccion> direccion;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+	@OneToMany(mappedBy = "persona")
 	private List<Usuario> usuario;
 	
 }
